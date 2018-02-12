@@ -1,0 +1,31 @@
+# modules used are debug but in practice different module should be used for directory creation and etc.
+# If the file or directory is already there then yaml doesn't create the file automatically. It skips it.
+
+---
+- name: configure web app
+  hosts: web
+  vars: # creating common variable for all. These var are location for git repo.
+   repo: myrepo.com/repo.git
+   version: 8
+
+  tasks:
+   - name: install nginx
+     debug:
+      msg: "dnf install nginx"
+
+   - name: ensure web directory # creating web directory
+     debug:
+      msg: "mkdir /webapp" # creating directory. Here i am using debug module but in practice file module is used.
+
+   - name: get content
+     debug:
+      msg: "git clone --branch {{ version }} {{ repo }} / webapp"
+
+   - name: ngnix config
+     debug:
+      msg: "put nginx config in place"
+
+   - name: ensure nginx is running
+     debug:
+      msg:}?"service nginx start"
+

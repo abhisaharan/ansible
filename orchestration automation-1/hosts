@@ -1,0 +1,13 @@
+# orchestration: is a complicated set of coordinated actions.
+
+[web]
+host1
+host2
+host3
+
+[lb]
+lb1
+lb2
+
+[all:vars]
+ansible_connection = local

@@ -1,0 +1,24 @@
+# 2 load balancer and 3 node. If one node or host fails or put for upgrade the load is transfered from that node by load
+# balancer to other node.
+
+---
+- name: Deploy
+  hosts: web
+  serial: 1  # each host will be taken through all the tasks before operating on next host. we use serial cause if we
+             # don't then all the hosts we be disabled at single time and there will be outage. serial prevents this.
+
+  tasks:
+  - name: disable node
+    debug:
+      msg: "disable node {{inventory_hostname}}"
+    delegate_to: "{{groups ['lb'][0] }}"
+
+  - name: upgrade web
+    debug:
+      msg: "upgrading software"
+
+  - name: enbale node
+    debug:
+      msg: "enable {{inventory_hostname}}"
+    delegate_to: "enable {{groups ['lb'][0] }}"
+

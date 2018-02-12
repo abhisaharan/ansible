@@ -1,0 +1,15 @@
+# This is inventory file for playbooks. It contains all the host or server names where plays and their tasks from .yaml file are performed.
+
+[groupA]
+host1
+host2
+host3
+
+[groupB]
+host4
+host5
+host6
+
+[all:vars]
+ansible_connection = local
+

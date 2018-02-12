@@ -1,0 +1,3 @@
+ansible --help |less
+
+ansible-doc command # to find info regarding command module. we can change to find info about another module.

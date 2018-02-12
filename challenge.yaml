@@ -1,0 +1,9 @@
+---
+- name: installing pip
+  hosts: not_defined
+
+  tasks:
+   - name: doing task one i.e installing pip
+       pip:
+          name: ansible
+          virtualenv: /my_app/venv

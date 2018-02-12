@@ -1,0 +1,26 @@
+# This is playbook where plays are name and hosts(inventory). Tasks are performed on each hosts. Tasks contain modules.
+
+---
+- name: do a demo
+  hosts: groupA
+
+  tasks:                      # this is task statoued for play [do a demo]
+  - name: demo task 1
+    debug:                   # this is module
+      msg: "this is task 1"
+
+  - name: demo task 2
+    debug:
+      msg: "this is task 2"
+
+- name: "do another demo"
+  hosts: groupB
+
+  tasks:
+  - name: demo tasks 3
+    debug:
+      msg: "this is task 3"
+
+  - name: demo task 4
+    debug:
+       msg: "this is task 4"
